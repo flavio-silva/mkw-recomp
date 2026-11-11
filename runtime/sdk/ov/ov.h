@@ -12,3 +12,6 @@ int ov_handheld(void);                     // MKW_OPERATION_MODE=handheld (defau
 const char *ov_language(void);             // the game's language, a Switch language code ("en-US", "zh-Hans", ...)
 const char *ov_shared_font_dir(char *buf, size_t n);   // MKW_SHARED_FONTS, else <romfs>/../../firmware/shared-fonts
 uint64_t ov_bfttf_size(const uint8_t *p, uint64_t len); // decoded font size of a BFTTF image, 0 if it is not one
+
+// ---- ov_socket.c
+int ov_lan_address(uint8_t ip[4], uint8_t mask[4]);   // MKW_LAN_IP or the primary IPv4 and its mask; -1 with none
