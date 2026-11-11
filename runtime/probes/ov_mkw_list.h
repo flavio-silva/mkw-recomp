@@ -1,6 +1,7 @@
-// The overrides only MKW imports (runtime/sdk: ov_net.c, ov_codec.c, ov_oe2.c, ov_time2.c, ov_touch.c, ov_system.c
-// account, ov_gfx.c nv::InitCheck): OV(case key, decorated name), one row of ov_probe.c's table each; ov_mkw_probe.c
-// calls them. Keys are the demangled names; "(work)" marks the overload that takes a work buffer.
+// The overrides only MKW imports (runtime/sdk: ov_net.c, ov_socket.c, ov_codec.c, ov_oe2.c, ov_time2.c, ov_touch.c,
+// ov_system.c account, ov_gfx.c nv::InitCheck): OV(case key, decorated name), one row of ov_probe.c's table each;
+// ov_mkw_probe.c calls them. Keys are the demangled names; "(work)" marks the overload that takes a work buffer, and
+// "(SockAddr)" and the like the socket overload with nn::socket's own types.
 OV("account::EnsureNetworkServiceAccountAvailable", "_ZN2nn7account36EnsureNetworkServiceAccountAvailableERKNS0_10UserHandleE")
 OV("account::EnsureNetworkServiceAccountIdTokenCacheAsync", "_ZN2nn7account44EnsureNetworkServiceAccountIdTokenCacheAsyncEPNS0_12AsyncContextERKNS0_10UserHandleE")
 OV("account::GetNetworkServiceAccountId", "_ZN2nn7account26GetNetworkServiceAccountIdEPNS0_23NetworkServiceAccountIdERKNS0_10UserHandleE")
@@ -92,6 +93,31 @@ OV("syncpt::sdk::DestroySyncPointEvent", "_ZN2nn6syncpt3sdk21DestroySyncPointEve
 OV("syncpt::sdk::InitializeMultiWaitHolder", "_ZN2nn6syncpt3sdk25InitializeMultiWaitHolderEPNS_2os19MultiWaitHolderTypeEPNS1_18SyncPointEventTypeE")
 OV("syncpt::sdk::RequestSyncPointEvent", "_ZN2nn6syncpt3sdk21RequestSyncPointEventEPNS1_18SyncPointEventTypeERKNS1_15SyncPointHandleE")
 OV("syncpt::sdk::TryWaitSyncPointEvent", "_ZN2nn6syncpt3sdk21TryWaitSyncPointEventEPKNS1_18SyncPointEventTypeE")
+OV("socket::Bind", "_ZN2nn6socket4BindEiPK8sockaddrj")
+OV("socket::Bind (SockAddr)", "_ZN2nn6socket4BindEiPKNS0_8SockAddrEj")
+OV("socket::Close", "_ZN2nn6socket5CloseEi")
+OV("socket::EventFd", "_ZN2nn6socket7EventFdEmNS0_12EventFdFlagsE")
+OV("socket::EventFdRead", "_ZN2nn6socket11EventFdReadEiPm")
+OV("socket::EventFdWrite", "_ZN2nn6socket12EventFdWriteEim")
+OV("socket::Finalize", "_ZN2nn6socket8FinalizeEv")
+OV("socket::FreeAddrInfo", "_ZN2nn6socket12FreeAddrInfoEP8addrinfo")
+OV("socket::FreeAddrInfo (AddrInfo)", "_ZN2nn6socket12FreeAddrInfoEPNS0_8AddrInfoE")
+OV("socket::GetAddrInfo", "_ZN2nn6socket11GetAddrInfoEPKcS2_PK8addrinfoPPS3_")
+OV("socket::GetAddrInfo (AddrInfo)", "_ZN2nn6socket11GetAddrInfoEPKcS2_PKNS0_8AddrInfoEPPS3_")
+OV("socket::GetLastErrno", "_ZN2nn6socket12GetLastErrnoEv")
+OV("socket::GetLastError", "_ZN2nn6socket12GetLastErrorEv")
+OV("socket::IsInitialized", "_ZN2nn6socket13IsInitializedEv")
+OV("socket::Poll", "_ZN2nn6socket4PollEP6pollfdmi")
+OV("socket::RecvFrom", "_ZN2nn6socket8RecvFromEiPvmiP8sockaddrPj")
+OV("socket::RecvFrom (MsgFlag)", "_ZN2nn6socket8RecvFromEiPvmNS0_7MsgFlagEPNS0_8SockAddrEPj")
+OV("socket::SendTo", "_ZN2nn6socket6SendToEiPKvmiPK8sockaddrj")
+OV("socket::SendTo (MsgFlag)", "_ZN2nn6socket6SendToEiPKvmNS0_7MsgFlagEPKNS0_8SockAddrEj")
+OV("socket::SetAllocator", "_ZN2nn6socket12SetAllocatorEPNS_14MemoryResourceE")
+OV("socket::SetSockOpt", "_ZN2nn6socket10SetSockOptEiNS0_5LevelENS0_6OptionEPKvj")
+OV("socket::Shutdown", "_ZN2nn6socket8ShutdownEii")
+OV("socket::Socket", "_ZN2nn6socket6SocketEiii")
+OV("socket::Socket (Family)", "_ZN2nn6socket6SocketENS0_6FamilyENS0_4TypeENS0_8ProtocolE")
+OV("socket::internal::Initialize", "_ZN2nn6socket8internal10InitializeEi")
 OV("time::AsyncEnsureNetworkClockAvailabilityTask::GetResult", "_ZN2nn4time39AsyncEnsureNetworkClockAvailabilityTask9GetResultEv")
 OV("time::AsyncEnsureNetworkClockAvailabilityTask::StartTask", "_ZN2nn4time39AsyncEnsureNetworkClockAvailabilityTask9StartTaskEv")
 OV("time::GetDeviceLocationName", "_ZN2nn4time21GetDeviceLocationNameEPNS0_12LocationNameE")
