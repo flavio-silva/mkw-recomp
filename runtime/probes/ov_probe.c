@@ -56,6 +56,7 @@ static Ov ovs[] = {
     {"prepo.AddInternetConnectionStatus", "_ZN2nn5prepo27AddInternetConnectionStatusEPNS0_10PlayReportEPKcS4_S4_"},
     {"nfp.Mount", "_ZN2nn3nfp5MountERKNS0_12DeviceHandleENS0_9ModelTypeENS0_11MountTargetE"},
     {"err.ShowError", "_ZN2nn3err9ShowErrorENS_6ResultE"},
+    {"err.ShowErrorVariant", "_ZN2nn3err9ShowErrorERKNS0_18ErrorResultVariantE"},
     // SDK-internal (section 5.2)
     {"nndiagStartup", "nndiagStartup"},
     {"aoc.Initialize", "_ZN2nn3aoc10InitializeEv"},
@@ -353,6 +354,8 @@ static void probe_applet(void) {
     uint8_t handles[64] = {0};
     CHECK((uint32_t)CALL("nfp.Mount", U(handles), 0, 0) == 0x8073, "nfp Mount: not device-not-found");
     CALL("err.ShowError", 0x2a8);
+    uint32_t variant[3] = {2, 2306, 501};   // an ErrorCode, as the wireless menu passes
+    CALL("err.ShowErrorVariant", U(variant));
     CALL("nndiagStartup", 0);
     CALL("aoc.Initialize", 0);
 
